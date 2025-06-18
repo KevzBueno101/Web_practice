@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculator</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .header {
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      border-bottom: 2px solid grey;
+    }
+    .num-pad {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      margin-bottom: 10px;
+    }
+    .pad {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      font-size: 24px;
+      background-color: #eee;
+      border: 1px solid #000;
+    }
+    .pad:focus,
+    .pad:hover {
+      background-color: rgb(173, 173, 166);
+    }
+    .oper {
+      font-weight: 500;
+      font-size: 32px;
+      color: rgb(69, 12, 228);
+    }
+    .rem {
+      color: rgb(244, 93, 11);
+    }
+    .ans {
+      display: flex;
+      align-items: center;
+      height: 100px;
+      justify-content: end;
+      padding-right: 20px;
+      font-weight: 400;
+      color: grey;
+      font-size: 50px;
+    }
+    .input {
+      height: 250px;
+      font-size: 50px;
+      font-weight: 300;
+      border: none;
+      text-align: right;
+      padding-right: 8%;
+    }
+    .input:focus {
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <input type="text" id="input" class="input" readonly />
+      <div class="ans" id="result"></div>
+    </div>
+    <div class="num-pad">
+      <button class="pad rem" id="clear">C</button>
+      <button class="pad l">%</button>
+      <button class="pad rem" id="delete">X</button>
+      <button class="pad oper l">/</button>
+    </div>
+    <div class="num-pad">
+      <button class="pad l">7</button>
+      <button class="pad l">8</button>
+      <button class="pad l">9</button>
+      <button class="pad oper l">x</button>
+    </div>
+    <div class="num-pad">
+      <button class="pad l">4</button>
+      <button class="pad l">5</button>
+      <button class="pad l">6</button>
+      <button class="pad oper l">-</button>
+    </div>
+    <div class="num-pad">
+      <button class="pad l">1</button>
+      <button class="pad l">2</button>
+      <button class="pad l">3</button>
+      <button class="pad oper l">+</button>
+    </div>
+    <div class="num-pad">
+      <button class="pad l">+/-</button>
+      <button class="pad l">0</button>
+      <button class="pad l">.</button>
+      <button class="pad oper l" id="equal">=</button>
+    </div>
+  </div>
+
+  <script>
+    const numbers = document.getElementsByClassName("l");
+    const input = document.getElementById("input");
+    const clear = document.getElementById("clear");
+    const del = document.getElementById("delete");
+    const result = document.getElementById("result");
+    const equal = document.getElementById("equal");
+
+    for (let i = 0; i < numbers.length; i++) {
+      numbers[i].addEventListener("click", AppendNumber);
+    }
+
+    clear.addEventListener("click", Clear);
+    del.addEventListener("click", DeleteLast);
+    equal.addEventListener("click", Calculate);
+
+    function AppendNumber() {
+      let value = this.innerText;
+
+      if (value === "=") return;
+
+      if (value === "x") value = "*";
+      if (value === "+/-") {
+        if (input.value.startsWith("-")) {
+          input.value = input.value.substring(1);
+        } else {
+          input.value = "-" + input.value;
+        }
+        return;
+      }
+
+      input.value += value;
+    }
+
+    function Clear() {
+      input.value = "";
+      result.innerText = "";
+    }
+
+    function DeleteLast() {
+      input.value = input.value.slice(0, -1);
+    }
+
+    function Calculate() {
+      let str = input.value;
+      str = str.replace(/x/gi, "*");
+      str = str.replace(/÷/g, "/");
+
+      if (/[\+\-\*\/\.]$/.test(str)) {
+        result.innerText = "Math Error";
+        return;
+      }
+
+      try {
+        const answer = eval(str);
+        result.innerText = isNaN(answer) ? "Math Error" : answer;
+      } catch (err) {
+        result.innerText = "Math Error";
+      }
+    }
+  </script>
+</body>
+</html>
