@@ -1,3 +1,17 @@
+@media (prefers-reduced-motion: no-preference){
+* {
+  scroll-behavior: smooth;
+}
+}
+ header{
+  position: fixed;     /* Keeps it locked in place */
+  top: 0;              /* Pins it to the top of the viewport */
+  width: 100%;         /* Ensures it spans the full width */
+  z-index: 1;       /* Keeps it above other elements */
+  background-color: #fff; /* Prevents transparency issues */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional: adds depth */
+}
+
 body {
   background: #f5f6f7;
   color: #1b1b32;
@@ -66,6 +80,12 @@ main {
   padding-top: 50px;
 }
 
+section {
+  width: 80%;
+  margin: 0 auto 10px auto;
+  max-width: 600px;
+}
+
 h1,
 h2 {
   font-family: Verdana, Tahoma;
@@ -73,10 +93,90 @@ h2 {
 
 h2 {
   border-bottom: 4px solid #dfdfe2;
+  margin-top: 0px;
+  padding-top: 60px;
+}
+
+.info {
+  padding: 10px 0 0 5px;
+}
+
+.formrow {
+  margin-top: 30px;
+  padding: 0px 15px;
+}
+
+input {
+  font-size: 1rem;
+}
+
+.info label, .info input {
+  display: inline-block;
+}
+
+.info input {
+  width: 50%;
+  text-align: left;
+}
+
+.info label {
+  width: 10%;
+  min-width: 55px;
+  text-align: right;
+}
+
+.question-block {
+  text-align: left;
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding-top: 5px;
+}
+
+h3 {
+  margin-top: 5px;
+  padding-left: 15px;
+  font-size: 1.375rem;
 }
 
 h3::before {
   content: "Question #";
+}
+
+.question {
+  border: none;
+  padding-bottom: 0;
+}
+
+.answers-list {
+  list-style: none;
+  padding: 0;
+}
+
+button {
+  display: block;
+  margin: 40px auto;
+  width: 40%;
+  padding: 15px;
+  font-size: 1.438rem;
+  background: #d0d0d5;
+  border: 3px solid #3b3b4f;
+}
+
+footer {
+  background-color: #2a2a40;
+  display: flex;
+  justify-content: center;
+}
+
+footer,
+footer a {
+  color: #dfdfe2;
+}
+
+address {
+  text-align: center;
+  padding: 0.3em;
 }
 
 .sr-only {
