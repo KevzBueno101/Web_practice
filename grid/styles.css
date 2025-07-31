@@ -1,0 +1,32 @@
+*,
+*::before
+*::after {
+  box-sizing: border-box;
+}
+*{
+    margin: 0;
+}
+
+body{
+    font-family: system-ui;
+    width: 100%;
+    margin-inline: auto;
+
+}
+
+img{
+    max-width: 20em;
+    display: block;
+}
+.wrapper{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 5rem;
+}
+.box{
+    border: 2px solid #cccc;
+    padding: 2rem;
+    border-radius: 4px;
+
+}
