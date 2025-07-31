@@ -11,6 +11,9 @@ body{
     font-family: system-ui;
     width: 100%;
     margin-inline: auto;
+    max-width: 100vw;
+    overflow-x: hidden;
+    margin-bottom: 5rem;
 
 }
 
@@ -20,13 +23,16 @@ img{
 }
 .wrapper{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
     gap: 1rem;
     margin-top: 5rem;
+    padding: 0 1rem;
 }
 .box{
     border: 2px solid #cccc;
     padding: 2rem;
     border-radius: 4px;
+    align-items: center;
+    text-align: center;
 
 }
