@@ -1,0 +1,20 @@
+
+
+.wrapper{
+    width: 800px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.light{
+    
+    height: 100px;
+    width: 100px;
+    background-color: #d2c8c8;
+}
+.dark{
+    
+    height: 100px;
+    width: 100px;
+    background-color: #333;
+}
