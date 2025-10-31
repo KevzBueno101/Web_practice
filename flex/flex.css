@@ -1,0 +1,12 @@
+.container{
+    display:flex;
+    gap:10px;
+    background-color: lightgray;
+    padding: 2em;
+    justify-content: center;
+    flex-direction: column;;
+}
+.item{
+    padding: 1em;
+    color: rgb(34, 19, 19);
+}
